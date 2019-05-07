@@ -30,13 +30,21 @@ def get_omroepzeeland():
         # file.write(f'Origin,Timestamp,Content,Title,Comment_count,Retweet_count\n')
         for url in url_list:
             browser.get(url)
-            container = browser.find_element_by_id('storytelling')
-            content_blocks = container.find_elements_by_tag_name('p')
+            container = browser.find_elements_by_id('storytelling')
+
+            if container:
+                content_blocks = container[0].find_elements_by_tag_name('p')
+
+            else:
+                continue
+
             # tekst uit artikel alle p's bij elkaar
             text = ''
             for block in content_blocks:
                 text += block.text
             print(text)
+
+            file.write(text)
 
 
 if __name__ == "__main__":

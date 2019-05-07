@@ -44,13 +44,21 @@ def get_omroepzeeland():
             text = ''
             for block in content_blocks:
                 text += block.text
-            print(text)
+            # print(text)
 
             # Write new line to csv
             file.write('\n')
 
             # Write url and text from articles to csv
-            file.write(url + ';' + text.replace('\n',''))
+            # file.write("Omroepzeeland" + ';')
+            # file.write(text.replace('\n',''))
+            endtext = text.replace('\n','')
+
+            # deleting ad's
+            endtext = endtext.replace('Razendsnel toegang tot het laatste Zeeuwse nieuws, het weer, sport en live radio en tv? Download de Omroep Zeeland app voor Android of iPhone/iPad.', '')
+
+            file.write("Omroepzeeland" + ';' + endtext)
+            print(endtext)
 
 
 if __name__ == "__main__":

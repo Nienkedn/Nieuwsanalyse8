@@ -26,8 +26,10 @@ def get_omroepzeeland():
 
         # Create and open csv
         file = open("Data/omroep_zeeland.csv", mode="w", encoding="utf-16")
+
         # Write header to csv
-        # file.write(f'Origin,Timestamp,Content,Title,Comment_count,Retweet_count\n')
+        file.write(f'Origin;Content\n')
+
         for url in url_list:
             browser.get(url)
             container = browser.find_elements_by_id('storytelling')
@@ -44,7 +46,11 @@ def get_omroepzeeland():
                 text += block.text
             print(text)
 
-            file.write(text)
+            # Write new line to csv
+            file.write('\n')
+
+            # Write url and text from articles to csv
+            file.write(url + ';' + text.replace('\n',''))
 
 
 if __name__ == "__main__":

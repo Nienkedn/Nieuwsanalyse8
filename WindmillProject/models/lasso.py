@@ -39,7 +39,7 @@ print("Avg:"+str(sum(lasso) / len(lasso)))
 
 plt.xlabel('Timestamps')
 plt.ylabel('Number of times the word shows up')
-plt.title('Populairity of the word '+zoekwoord)
+plt.title('Popularity of the word '+zoekwoord)
 plt.grid(True)
 
 y = []

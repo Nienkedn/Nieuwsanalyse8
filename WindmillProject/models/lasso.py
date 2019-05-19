@@ -45,7 +45,7 @@ plt.grid(True)
 y = []
 for dot in wordcount[1001:2700]:
     y.append(dot)
-plt.scatter(timestamps[1001:2700], y,s=2)
+plt.scatter(timestamps[1001:2700], y, s=2)
 
 plt.plot(timestamps[1001:2700], lasso, linewidth=0.5)
 plt.show()

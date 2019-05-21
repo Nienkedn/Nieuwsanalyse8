@@ -11,7 +11,7 @@ def main():
 def get_nu_nl():
     # Setup selenium instance
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     browser = webdriver.Chrome(options=chrome_options)
     url = "https://www.nu.nl/tag/windmolens"
     browser.get(url)

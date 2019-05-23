@@ -28,30 +28,58 @@ def scatter_result():
     plt.show()
 
 
-def cluster_results():
+def cluster_transform():
     result = get_sub_pol_array()
 
-    pca = PCA(n_components=1).fit(result[1])
-    pca_d = pca.transform(result[1])
-    pca_c = pca.transform(result[0])
-
     kmeans = KMeans(n_clusters=4)
-    kmeansoutput = kmeans.fit(result[1])
+    kmeansoutput = kmeans.fit_predict(result[2])
+    print(kmeansoutput)
 
-    plt.scatter(pca_c[:, 0], pca_d[:, 0], c=kmeansoutput.labels_)
-    # plt.show()
-    #
-    # clusters = KMeans(n_clusters=4, random_state=5).fit(result[2])
-    # c2 = clusters.transform(result[2])
-    # centroids = clusters.cluster_centers_
-    #
-    #
-    # plt.scatter(c2[0], c2[1], c='r', s=10, alpha=0.5)
-    # plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=50)
-    #
-    # plt.scatter(result[0], result[1], c='red', s=50)
+    for i, x in enumerate(kmeansoutput):
+        result[2][i].append(x)
+
+    print(result[2])
+    pca = PCA(n_components=2).fit(result[2])
+    pca_d = pca.transform(result[0])
+    pca_c = pca.transform(result[1])
+    print(pca_d[0])
+    print(pca_c[0])
+
+    for i, x in enumerate(result[2]):
+        if x[2] == 0:
+            plt.scatter(pca_d[i][0], pca_c[i][1], c='r', s=10, alpha=0.5)
+        elif x[2] == 1:
+            plt.scatter(pca_d[i][0], pca_c[i][1], c='g', s=10, alpha=0.5)
+        elif x[2] == 2:
+            plt.scatter(pca_d[i][0], pca_c[i][1], c='y', s=10, alpha=0.5)
+        elif x[2] == 3:
+            plt.scatter(pca_d[i][0], pca_c[i][1], c='b', s=10, alpha=0.5)
+
+    plt.show()
+
+
+def cluster_no_transform():
+    result = get_sub_pol_array()
+
+    kmeans = KMeans(n_clusters=3)
+    kmeansoutput = kmeans.fit_predict(result[2])
+    print(kmeansoutput)
+
+    for i, x in enumerate(kmeansoutput):
+        result[2][i].append(x)
+
+    for i, x in enumerate(result[2]):
+        if x[2] == 0:
+            plt.scatter(result[2][i][0], result[2][i][1], c='r', s=10, alpha=0.5)
+        elif x[2] == 1:
+            plt.scatter(result[2][i][0], result[2][i][1], c='g', s=10, alpha=0.5)
+        elif x[2] == 2:
+            plt.scatter(result[2][i][0], result[2][i][1], c='y', s=10, alpha=0.5)
+        # elif x[2] == 3:
+        #     plt.scatter(result[2][i][0], result[2][i][1], c='b', s=10, alpha=0.5)
+
     plt.show()
 
 
 if __name__ == "__main__":
-    cluster_results()
+    cluster_no_transform()

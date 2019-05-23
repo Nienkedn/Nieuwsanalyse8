@@ -30,38 +30,34 @@ def scatter_result():
 
 def cluster_transform():
     result = get_sub_pol_array()
+    colors = ['r', 'g', 'b', 'y', 'c', 'm', 'k']
+    cluster_amount = 3
 
-    kmeans = KMeans(n_clusters=4)
+    kmeans = KMeans(n_clusters=cluster_amount)
     kmeansoutput = kmeans.fit_predict(result[2])
     print(kmeansoutput)
 
     for i, x in enumerate(kmeansoutput):
         result[2][i].append(x)
 
-    print(result[2])
     pca = PCA(n_components=2).fit(result[2])
     pca_d = pca.transform(result[0])
     pca_c = pca.transform(result[1])
-    print(pca_d[0])
-    print(pca_c[0])
 
     for i, x in enumerate(result[2]):
-        if x[2] == 0:
-            plt.scatter(pca_d[i][0], pca_c[i][1], c='r', s=10, alpha=0.5)
-        elif x[2] == 1:
-            plt.scatter(pca_d[i][0], pca_c[i][1], c='g', s=10, alpha=0.5)
-        elif x[2] == 2:
-            plt.scatter(pca_d[i][0], pca_c[i][1], c='y', s=10, alpha=0.5)
-        elif x[2] == 3:
-            plt.scatter(pca_d[i][0], pca_c[i][1], c='b', s=10, alpha=0.5)
+        for k in range(0, cluster_amount):
+            if x[2] == k:
+                plt.scatter(pca_d[i][0], pca_c[i][1], c=colors[k], s=10, alpha=0.5)
 
     plt.show()
 
 
 def cluster_no_transform():
     result = get_sub_pol_array()
+    colors = ['r', 'g', 'b', 'y', 'c', 'm', 'k']
+    cluster_amount = 3
 
-    kmeans = KMeans(n_clusters=3)
+    kmeans = KMeans(n_clusters=cluster_amount)
     kmeansoutput = kmeans.fit_predict(result[2])
     print(kmeansoutput)
 
@@ -69,14 +65,9 @@ def cluster_no_transform():
         result[2][i].append(x)
 
     for i, x in enumerate(result[2]):
-        if x[2] == 0:
-            plt.scatter(result[2][i][0], result[2][i][1], c='r', s=10, alpha=0.5)
-        elif x[2] == 1:
-            plt.scatter(result[2][i][0], result[2][i][1], c='g', s=10, alpha=0.5)
-        elif x[2] == 2:
-            plt.scatter(result[2][i][0], result[2][i][1], c='y', s=10, alpha=0.5)
-        # elif x[2] == 3:
-        #     plt.scatter(result[2][i][0], result[2][i][1], c='b', s=10, alpha=0.5)
+        for k in range(0, cluster_amount):
+            if x[2] == k:
+                plt.scatter(result[2][i][0], result[2][i][1], c=colors[k], s=10, alpha=0.5)
 
     plt.show()
 

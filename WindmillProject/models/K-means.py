@@ -12,7 +12,7 @@ tweets = open("../Data/tweets.csv", mode="r", encoding="utf-16")
 # The csv files will be passed through and if the texts contains stopwords, all of them will be removed from the resulting tokens. It will be converted to a matrix of TF-IDF features.
 stop_words = get_stop_words('dutch')
 my_stop_words = (["null", "http", "bit", "www", "https", "html", "ly", "nl", "com", "origin", "Timestamp", "Content", "Title", "Comment_count", "Retweet_count", "twitter", "000", "10", "11", "12", "13",
-                  "14", "17"])
+                  "14", "17", "rtvu"])
 vectorizer = TfidfVectorizer(stop_words = stop_words + my_stop_words)
 
 X = vectorizer.fit_transform(omroepzeeland)

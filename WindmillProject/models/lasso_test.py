@@ -20,11 +20,11 @@ with open('../Data/tweets.csv', 'r', encoding='utf-16') as file:
         fit_data.append(temp_array)
 
 # Decide on model and fit train data with targets
-reg = linear_model.Lasso(alpha=0.05)
-reg.fit(fit_data[1001:2700], windmolencount[1001:2700])
+reg = linear_model.Lasso(alpha=0.0001)
+reg.fit(fit_data[:1000], windmolencount[:1000])
 
 # Try to predict targets with new data
-lasso = list(reg.predict(fit_data[:1000]))
+lasso = list(reg.predict(fit_data[1001:2700]))
 print(lasso)
 print("Avg:"+str(sum(lasso) / len(lasso)))
 print(reg.coef_)
@@ -35,6 +35,11 @@ print(reg.coef_)
 #     x.append(dot[0])
 #     y.append(dot[1])
 # plt.scatter(x, y)
+
+plt.xlabel('Number of tweets')
+plt.ylabel('Number of times the word shows up')
+plt.title('Usage of the word windmolen')
+plt.grid(True)
 
 plt.plot(lasso)
 plt.show()

@@ -1,7 +1,6 @@
 from sklearn import linear_model
 import re
 import csv
-import matplotlib.pyplot as plt
 import datetime as dt
 
 wordcount = []

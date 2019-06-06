@@ -4,7 +4,7 @@ import csv
 import datetime as dt
 
 wordcount = []
-zoekwoord = '.'
+zoekwoord = 'wind'
 with open('../Data/data2.csv', 'r', encoding='utf-16') as file:
     data = csv.reader(file)
     next(data)

@@ -32,7 +32,7 @@ def get_nu_nl():
         urls_con = container.find_elements_by_class_name('trackevent')
         for url_con in urls_con:
             url_list.append(url_con.get_attribute('href'))
-    print(url_list[-1])
+    print(url_list)
 
     # Create and open csv
     file = open("Data/nu_nl.csv", mode="w", encoding="utf-16")

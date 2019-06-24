@@ -1,11 +1,11 @@
 from sklearn import linear_model
 import re
 import csv
-import matplotlib.pyplot as plt
 import datetime as dt
 
 wordcount = []
 zoekwoord = 'windmolen'
+
 with open('../Data/data2.csv', 'r', encoding='utf-16') as file:
     data = csv.reader(file)
     next(data)

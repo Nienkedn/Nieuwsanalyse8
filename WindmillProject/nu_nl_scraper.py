@@ -43,8 +43,7 @@ def get_nu_nl():
         # Get timestamp article
         date_con = browser.find_element_by_xpath("//span[@class='pubdate small']")
         date = date_con.get_attribute('innerHTML')
-        date = date[:8]
-        timestamp = datetime.datetime.strptime(date, "%d-%m-%y").timestamp()
+        timestamp = datetime.datetime.strptime(date, "%d-%m-%y %H:%M").timestamp()
 
         # Get content article
         content_articles = browser.find_element_by_xpath("//div[@data-type='article.body']")

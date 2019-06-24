@@ -36,15 +36,11 @@ for i in range(true_k):
    print("\n""Cluster %d:" % i),
    for ind in order_centroids[i, :10]:
        print(' %s' % terms[ind]),
-   print
 
 # Explanation of the model, script en TFIDF
-print("\n")
-print("Uitleg")
-print("\n")
-print("We hebben zo ingesteld dat er uit de drie bronnen(nu.nl, twitter en omroepzeeland) vijf clusters gemaakt moeten worden. Eerst worden uit de drie bronnen de stopwoorden eruit gefilterd. Daarna word er door \n"
-       "middel van term frequency-inverse document frequency aka TFIDF aan ieder woord een cijfer gegeven om zo aan te geven hoe belangrijk het woord is voor de tekst. Deze informatie wordt door het K-means algoritme \n"
-       "gebruikt om de belangrijkste woorden te groeperen in clusters. Hierbij staan de belangrijkste woorden in cluster 1 en de minder belangrijke woorden in het laatste cluster")
+# We hebben zo ingesteld dat er uit de drie bronnen(nu.nl, twitter en omroepzeeland) vijf clusters gemaakt moeten worden. Eerst worden uit de drie bronnen de stopwoorden eruit gefilterd. Daarna word er door
+# middel van term frequency-inverse document frequency aka TFIDF aan ieder woord een cijfer gegeven om zo aan te geven hoe belangrijk het woord is voor de tekst. Deze informatie wordt door het K-means algoritme
+# gebruikt om de belangrijkste woorden te groeperen in clusters. Hierbij staan de belangrijkste woorden in cluster 1 en de minder belangrijke woorden in het laatste cluster
 
 print(Y)
 print(vectorizer.get_feature_names())
